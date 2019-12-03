@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="728-JR-8jJ">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--News View Controller-->
+        <scene sceneID="1gk-BJ-e2i">
+            <objects>
+                <viewController id="728-JR-8jJ" customClass="NewsViewController" customModule="SwiftNewsKit_Design1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="izE-2K-mR9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p66-eR-q97">
+                                <rect key="frame" x="0.0" y="244" width="414" height="652"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="p66-eR-q97" firstAttribute="trailing" secondItem="GBY-3L-S97" secondAttribute="trailing" id="BbO-b5-bUU"/>
+                            <constraint firstItem="p66-eR-q97" firstAttribute="top" secondItem="GBY-3L-S97" secondAttribute="top" constant="200" id="RbH-Ic-SEi"/>
+                            <constraint firstAttribute="bottom" secondItem="p66-eR-q97" secondAttribute="bottom" id="gfj-Sm-fo7"/>
+                            <constraint firstItem="p66-eR-q97" firstAttribute="leading" secondItem="GBY-3L-S97" secondAttribute="leading" id="jEL-Ce-URe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GBY-3L-S97"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fjn-gR-wQ4"/>
+                    <connections>
+                        <segue destination="ino-bL-1gB" kind="show" identifier="WebSegue" id="T0z-gi-qGK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0P8-Xc-CsL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1768.1159420289857" y="126.5625"/>
+        </scene>
+        <!--Web Browser View Controller-->
+        <scene sceneID="uWH-pP-WFf">
+            <objects>
+                <viewController id="ino-bL-1gB" customClass="WebBrowserViewController" customModule="SwiftNewsKit_Design1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bVr-Ye-LmY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="38N-KX-PV1">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="38N-KX-PV1" firstAttribute="trailing" secondItem="ZaS-db-YGl" secondAttribute="trailing" id="da8-AO-5bO"/>
+                            <constraint firstItem="38N-KX-PV1" firstAttribute="top" secondItem="bVr-Ye-LmY" secondAttribute="top" id="fVw-0r-LOe"/>
+                            <constraint firstItem="38N-KX-PV1" firstAttribute="leading" secondItem="ZaS-db-YGl" secondAttribute="leading" id="syH-et-b8d"/>
+                            <constraint firstAttribute="bottom" secondItem="38N-KX-PV1" secondAttribute="bottom" id="tZu-Zu-PQS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZaS-db-YGl"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SKP-Lr-8PF"/>
+                    <connections>
+                        <outlet property="webView" destination="38N-KX-PV1" id="Zqi-6P-K36"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DBS-71-mCJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2592.753623188406" y="126.5625"/>
+        </scene>
+    </scenes>
+</document>
