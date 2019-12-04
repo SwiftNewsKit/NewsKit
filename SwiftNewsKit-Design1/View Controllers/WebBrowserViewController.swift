@@ -9,8 +9,12 @@
 import UIKit
 import WebKit
 import SwiftSoup
+import ReadabilityKit
 
 class WebBrowserViewController: UIViewController {
+    
+    //temp storage for all URLs
+    var tempURLs: [String] = []
 
     // MARK: - Properties
     
@@ -49,6 +53,7 @@ class WebBrowserViewController: UIViewController {
                         let allArticleUrls = self.scrapeUrls(url: url)
                         let newArray = allArticleUrls?.shuffled()
                         // We now want to run this array through readability kit
+                        self.extractInfoFromURLs(urls: newArray ?? [])
                         
                     }
                 }
@@ -82,6 +87,7 @@ class WebBrowserViewController: UIViewController {
             }
             
             print("HERE ALL URLS: ", allUrls.count, allUrls)
+            tempURLs = allUrls
             return allUrls
         } catch {
             // contents could not be loaded
@@ -89,6 +95,21 @@ class WebBrowserViewController: UIViewController {
             return nil
         }
         
+    }
+    
+    func extractInfoFromURLs(urls: [String]) {
+        for url in urls {
+            let articleUrl = URL(string: url)!
+            Readability.parse(url: articleUrl, completion: { data in
+                let title = data?.title ?? ""
+                let description = data?.description ?? ""
+                let keywords = data?.keywords ?? []
+                let imageUrl = data?.topImage
+                let videoUrl = data?.topVideo
+                
+                print("title: \(title), description: \(description), keywords \(keywords), top image: \(imageUrl), top video: \(videoUrl)")
+            })
+        }
     }
 
     // MARK: - UI

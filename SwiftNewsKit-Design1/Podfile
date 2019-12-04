@@ -8,5 +8,6 @@ target 'SwiftNewsKit-Design1' do
   # Pods for SwiftNewsKit-Design1
 pod 'ReadabilityKit'
 pod 'SwiftSoup'
+pod 'ReadabilityKit'
 
 end
