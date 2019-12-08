@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="728-JR-8jJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="728-JR-8jJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,18 +19,43 @@
                                 <rect key="frame" x="0.0" y="244" width="414" height="652"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lZL-TO-PI8">
+                                <rect key="frame" x="123" y="369" width="168" height="168"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="168" id="Sb5-WY-x3E"/>
+                                    <constraint firstAttribute="width" constant="168" id="Xfd-UV-2zS"/>
+                                    <constraint firstAttribute="width" secondItem="lZL-TO-PI8" secondAttribute="height" multiplier="1:1" id="vo6-e6-GB0"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WVl-ln-M4d">
+                                <rect key="frame" x="113" y="384" width="42" height="20.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmR-vY-lBa">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="WVl-ln-M4d" firstAttribute="centerX" secondItem="GBY-3L-S97" secondAttribute="centerX" id="2A9-XX-ziN"/>
+                            <constraint firstItem="lZL-TO-PI8" firstAttribute="centerY" secondItem="GBY-3L-S97" secondAttribute="centerY" id="86Y-Nt-iQ2"/>
                             <constraint firstItem="p66-eR-q97" firstAttribute="trailing" secondItem="GBY-3L-S97" secondAttribute="trailing" id="BbO-b5-bUU"/>
+                            <constraint firstItem="lZL-TO-PI8" firstAttribute="centerX" secondItem="GBY-3L-S97" secondAttribute="centerX" id="QfI-qK-oSA"/>
                             <constraint firstItem="p66-eR-q97" firstAttribute="top" secondItem="GBY-3L-S97" secondAttribute="top" constant="200" id="RbH-Ic-SEi"/>
                             <constraint firstAttribute="bottom" secondItem="p66-eR-q97" secondAttribute="bottom" id="gfj-Sm-fo7"/>
                             <constraint firstItem="p66-eR-q97" firstAttribute="leading" secondItem="GBY-3L-S97" secondAttribute="leading" id="jEL-Ce-URe"/>
+                            <constraint firstItem="WVl-ln-M4d" firstAttribute="centerY" secondItem="GBY-3L-S97" secondAttribute="centerY" id="nvO-Aq-6QL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GBY-3L-S97"/>
                     </view>
                     <navigationItem key="navigationItem" id="fjn-gR-wQ4"/>
                     <connections>
+                        <outlet property="imageView" destination="lZL-TO-PI8" id="FPz-oW-00g"/>
+                        <outlet property="titleLbl" destination="rmR-vY-lBa" id="huJ-Cl-ceO"/>
                         <segue destination="ino-bL-1gB" kind="show" identifier="WebSegue" id="T0z-gi-qGK"/>
                     </connections>
                 </viewController>

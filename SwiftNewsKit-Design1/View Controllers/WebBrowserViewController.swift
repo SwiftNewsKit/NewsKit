@@ -12,13 +12,12 @@ import SwiftSoup
 import ReadabilityKit
 
 class WebBrowserViewController: UIViewController {
-    
-    //temp storage for all URLs
-    var tempURLs: [String] = []
 
     // MARK: - Properties
     
     var receivedLink: URL?
+    //temp storage for all URLs
+    var tempURLs: [String] = []
     
     // MARK: - Outlets
     
@@ -107,7 +106,7 @@ class WebBrowserViewController: UIViewController {
                 let imageUrl = data?.topImage
                 let videoUrl = data?.topVideo
                 
-                print("title: \(title), description: \(description), keywords \(keywords), top image: \(imageUrl), top video: \(videoUrl)")
+                print("title: \(title), keywords \(keywords), top image: \(imageUrl), top video: \(videoUrl)")
             })
         }
     }

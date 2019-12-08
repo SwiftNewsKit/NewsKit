@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReadabilityKit
 
 class NewsViewController: UIViewController {
     
@@ -46,6 +47,12 @@ class NewsViewController: UIViewController {
         static let WebBrowserSegue = "WebSegue"
     }
     
+    // MARK: - Outlets
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var titleLbl: UILabel!
+    
+    
     // MARK: - VC Lifecycle
     
     override func viewDidLoad() {
@@ -62,6 +69,12 @@ class NewsViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self //Methods wont run if these arent called
+        
+        imageView.layer.cornerRadius = 30.0
+        imageView.layer.masksToBounds = true
+
+        imageView.sizeToFit()
+        setupImage()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -71,6 +84,29 @@ class NewsViewController: UIViewController {
          }
     }
     
+    private func setupImage(){
+        extractInfoFromURLs(url: "https://techcrunch.com/2014/02/19/facebook-buying-whatsapp-for-16b-in-cash-and-stock-plus-3b-in-rsus/")
+    }
+    
+    
+    func extractInfoFromURLs(url: String) {
+        let articleUrl = URL(string: url)!
+        Readability.parse(url: articleUrl, completion: { data in
+            let title = data?.title ?? ""
+            let description = data?.description ?? ""
+            let keywords = data?.keywords ?? []
+            let imageUrl = data?.topImage
+            let videoUrl = data?.topVideo
+            
+            print("title: \(title), keywords \(keywords), top image: \(imageUrl), top video: \(videoUrl)")
+            
+            DispatchQueue.main.async {
+                self.imageView.downloadImage(from: URL(string: "https://techcrunch.com/wp-content/uploads/2014/02/b0pjcuntzee4hgg07zt84ayv5q37uttg-rr1v3xj2lu.png")!)
+                self.titleLbl.text = title
+            }
+        })
+    }
+
 }
 
 extension NewsViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
